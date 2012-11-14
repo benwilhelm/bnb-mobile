@@ -33,9 +33,10 @@ $('#home').live('pageinit',function(e) {
     },function(err){
       // failure
       mobile_alert.alert(
-        "download error source: " + err.source + "<br>" + 
-        "download error target: " + err.target + "<br>" + 
-        "upload error code: " + err.code + "<br>" 
+        //"download error source: " + err.source + "<br>" + 
+        //"download error target: " + err.target + "<br>" + 
+        "error code: " + err.code + "<br>" +
+        "http status: " + err.http_status + "<br>" 
       ) ;
     }) ;
   }) ;
