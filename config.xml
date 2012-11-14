@@ -20,6 +20,7 @@
   <icon src="images/icon_36.png" width="36" height="36" />
 
   <feature name="http://api.phonegap.com/1.0/device" />
+  <access origin="http://c385093.r93.cf1.rackcdn.com" />
 
 	<preference name="target-device" value="handset" />
 	<preference name="fullscreen" value="true" />
