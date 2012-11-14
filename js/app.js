@@ -30,11 +30,13 @@ $('#home').live('pageinit',function(e) {
     fileTransfer.download(uri, destination,function(f){
       // success
       mobile_alert.alert("Success!<br>" + f.fullPath ) ;
+      $('.status').html("<img src='" + f.fullPath + "' />") ;
     },function(err){
       // failure
       mobile_alert.alert(
         //"download error source: " + err.source + "<br>" + 
         //"download error target: " + err.target + "<br>" + 
+        "<strong>No dice</strong><br>" +
         "error code: " + err.code + "<br>" +
         "http status: " + err.http_status + "<br>" 
       ) ;
