@@ -1,0 +1,53 @@
+<!DOCTYPE html> 
+<html> 
+<head> 
+	<title>Your Thinner Wallet</title> 
+	<meta name="viewport" content="width=device-width, initial-scale=1"> 
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
+	<link rel="stylesheet" href="css/style.css" />
+  <script src='phonegap.js' type="text/javascript"></script>
+  <script src='barcodescanner.js' type="text/javascript"></script>
+  <script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+  <script>
+    $(document).bind('mobileinit',function(){
+      $.extend($.mobile,{
+        defaultPageTransition: 'none'
+      }) ;
+    }) ;
+  </script>
+  <script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
+  <script src="js/jquery-barcode-2.0.2.min.js"></script>
+  <script src="js/objects/db-interface.js"></script>
+  <script src="js/objects/scanner.js"></script>
+  <script src="js/objects/mobile-alert.js"></script>
+  <script src="js/helpers.js"></script>
+  <script src="js/app.js"></script>
+</head> 
+<body> 
+
+<div data-role="page" class="page" id="home">
+	<div class='header' data-role="header" data-position="fixed"></div><!-- /header -->
+	<div data-role="content" class="content">
+	
+	 <a id="download_me" data-role="button" href="javascript:void(0)">Download</a>
+	
+	</div><!-- /content -->
+	<div class="footer" data-role="footer" data-position="fixed"></div><!-- footer -->
+</div><!-- #home -->
+
+
+<div id='header_html' class="hide">
+	<h1>Download Test</h1>
+
+</div>
+
+<div id="footer_html" class="hide">
+    <a class="quit" href="/">Quit</a>
+    <p class="copyright">&copy; 2012<br/>Double Beam Design Group</p>
+</div>
+
+
+<div id="confirm"></div>
+
+</body>
+</html>

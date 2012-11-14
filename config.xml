@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widget xmlns		= "http://www.w3.org/ns/widgets"
+	xmlns:gap	= "http://phonegap.com/ns/1.0"
+	id		= "com.doublebeamdesign.download-test"
+	version 	= "1.0">
+
+	<name>Download Test</name>
+
+	<description>
+        Test app to work with the phonegap:build FileTransfer.download() method
+	</description>
+
+	<author href="http://www.doublebeamdesign.com"
+		email="hello@doublebeamdesign.com">
+		Double Beam Design Group
+	</author>
+
+  <icon src="images/icon_72.png" width="72" height="72" />
+  <icon src="images/icon_48.png" width="48" height="48" />
+  <icon src="images/icon_36.png" width="36" height="36" />
+
+  <feature name="http://api.phonegap.com/1.0/device" />
+
+	<preference name="target-device" value="handset" />
+	<preference name="fullscreen" value="true" />
+	<preference name="orientation" value="portrait" />
+	
+</widget>
