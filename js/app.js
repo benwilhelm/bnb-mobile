@@ -6,6 +6,10 @@ $('[data-role="page"]').live('pagebeforecreate',function(e){
 }) ;
 
 $('[data-role="page"]').live('pageinit',function(e){
+  $(".photoswipe a").click(function(e){
+    e.preventDefault() ;
+    e.stopPropagation() ;
+  }).photoSwipe() ;
   $(".quit").click(function(e){
     console.log('quit') ;
     e.preventDefault() ;
