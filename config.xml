@@ -21,9 +21,7 @@
 
   <feature name="http://api.phonegap.com/1.0/device" />
   <feature name="http://api.phonegap.com/1.0/file" />
-  <access origin="http://c385093.r93.cf1.rackcdn.com" />
-  <access origin="http://*.2d2.local">
-  <access origin="http://2d2.local">
+  <access origin="http://bitsandbristles.com">
 
 	<preference name="target-device" value="handset" />
 	<preference name="fullscreen" value="true" />
