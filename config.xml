@@ -21,7 +21,12 @@
 
   <feature name="http://api.phonegap.com/1.0/device" />
   <feature name="http://api.phonegap.com/1.0/file" />
-  <access origin="http://bitsandbristles.com" />
+  <access origin="http://staging.bitsandbristles.com" />
+
+  <gap:splash src="images/splash-s.jpg" gap:platform="android" gap:density="ldpi" />
+  <gap:splash src="images/splash-m.jpg" gap:platform="android" gap:density="mdpi" />
+  <gap:splash src="images/splash-l.jpg" gap:platform="android" gap:density="hdpi" />
+  <gap:splash src="images/splash-xl.jpg" gap:platform="android" gap:density="xhdpi" />
 
 	<preference name="target-device" value="handset" />
 	<preference name="fullscreen" value="true" />
