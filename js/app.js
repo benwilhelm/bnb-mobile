@@ -13,7 +13,6 @@ $('[data-role="page"]').live('pageinit',function(e){
   //  e.stopPropagation() ;
   //}).photoSwipe() ;
   $(".quit").click(function(e){
-    console.log('quit') ;
     e.preventDefault() ;
     e.stopPropagation() ;
     navigator.app.exitApp() ;
