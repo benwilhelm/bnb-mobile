@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <widget xmlns		= "http://www.w3.org/ns/widgets"
 	xmlns:gap	= "http://phonegap.com/ns/1.0"
-	id		= "com.doublebeamdesign.download-test"
+	id		= "com.bitsandbristles.mobile-portfolio"
 	version 	= "1.0">
 
-	<name>Download Test</name>
+	<name>B&B Mobile</name>
 
 	<description>
-        Test app to work with the phonegap:build FileTransfer.download() method
+        Mobile app for storing a bitsandbristles.com portfolio offline
 	</description>
 
-	<author href="http://www.doublebeamdesign.com"
-		email="hello@doublebeamdesign.com">
-		Double Beam Design Group
+	<author href="http://bitsandbristles.com"
+		email="info@bitsandbristles.com">
+		Bits and Bristles
 	</author>
 
   <icon src="images/icon_72.png" width="72" height="72" />
@@ -22,6 +22,8 @@
   <feature name="http://api.phonegap.com/1.0/device" />
   <feature name="http://api.phonegap.com/1.0/file" />
   <access origin="http://c385093.r93.cf1.rackcdn.com" />
+  <access origin="http://*.2d2.local">
+  <access origin="http://2d2.local">
 
 	<preference name="target-device" value="handset" />
 	<preference name="fullscreen" value="true" />

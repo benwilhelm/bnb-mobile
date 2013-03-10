@@ -1,7 +1,7 @@
 <!DOCTYPE html> 
 <html> 
 <head> 
-	<title>Your Thinner Wallet</title> 
+	<title>B&B Mobile</title> 
 	<meta name="viewport" content="width=device-width, initial-scale=1"> 
 	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
 	<link rel="stylesheet" href="css/style.css" />
@@ -26,36 +26,60 @@
 </head> 
 <body> 
 
+<!-- HOME PAGE ##########################-->
 <div data-role="page" class="page" id="home">
 	<div class='header' data-role="header" data-position="fixed"></div><!-- /header -->
 	<div data-role="content" class="content">
 	
-	  <a id="download_me" href="#" data-role='button'>Download</a>
-	
-    <ul class="photoswipe">
-      <li><a href="images/1.jpeg"><img src="images/-1.jpeg" alt="photo 1" /></a></li>
-      <li><a href="images/2.jpeg"><img src="images/-2.jpeg" alt="photo 2" /></a></li>
-      <li><a href="images/3.jpeg"><img src="images/-3.jpeg" alt="photo 3" /></a></li>
-      <li><a href="images/4.jpeg"><img src="images/-4.jpeg" alt="photo 4" /></a></li>
-      <li><a href="images/5.jpeg"><img src="images/-5.jpeg" alt="photo 5" /></a></li>
-      <li><a href="images/6.jpeg"><img src="images/-6.jpeg" alt="photo 6" /></a></li>
-      <li><a href="images/7.jpeg"><img src="images/-7.jpeg" alt="photo 7" /></a></li>
-      <li><a href="images/8.jpeg"><img src="images/-8.jpeg" alt="photo 8" /></a></li>
-      <li><a href="images/9.jpeg"><img src="images/-9.jpeg" alt="photo 9" /></a></li>
-    </ul>
+    <form id="login_form" method="post" action="http://2d2.local">
+      <input type="hidden" name="get_portfolio_media_map" value="1" />
+    
+      <label>Your B&B Username</label>
+      <input type="text" name="username" />
+
+      <label>Your B&B Password</label>
+      <input type="password" name="password" />
+
+      <label>Your domain</label>
+      <input type="text" name="domain" />
+      
+      <input type="submit" value="Sync" />
+    </form>
 	
 	</div><!-- /content -->
 	<div class="footer" data-role="footer" data-position="fixed"></div><!-- footer -->
 </div><!-- #home -->
 
 
+<!-- SYNC PAGE ####################### -->
+<div data-role="page" class="page" id="portfolio_sync">
+	<div class='header' data-role="header" data-position="fixed"></div><!-- /header -->
+	<div data-role="content" class="content">
+	
+	</div><!-- /content -->
+	<div class="footer" data-role="footer" data-position="fixed"></div><!-- footer -->
+</div><!-- #portfolio_sync -->
+
+
+<!-- PORTFOLIO PAGE ###################-->
+<div data-role="page" class="page" id="portfolio">
+	<div class='header' data-role="header" data-position="fixed"></div><!-- /header -->
+	<div data-role="content" class="content">
+	
+    <ul class="photoswipe">
+    </ul>
+	
+	</div><!-- /content -->
+	<div class="footer" data-role="footer" data-position="fixed"></div><!-- footer -->
+</div><!-- #portfolio -->
+
+
 <div id='header_html' class="hide">
-	<h1>Download Test</h1>
+	<h1>B&B Mobile</h1>
 </div>
 
 <div id="footer_html" class="hide">
     <a class="quit" href="/">Quit</a>
-    <p class="copyright">&copy; 2012<br/>Double Beam Design Group</p>
 </div>
 
 

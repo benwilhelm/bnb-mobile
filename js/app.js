@@ -1,3 +1,5 @@
+var portfolioData ;
+
 $('[data-role="page"]').live('pagebeforecreate',function(e){
   var headerHtml = $('#header_html').html() ;
   $(this).find('[data-role="header"]').html(headerHtml) ;
@@ -6,10 +8,10 @@ $('[data-role="page"]').live('pagebeforecreate',function(e){
 }) ;
 
 $('[data-role="page"]').live('pageinit',function(e){
-  $(".photoswipe a").click(function(e){
-    e.preventDefault() ;
-    e.stopPropagation() ;
-  }).photoSwipe() ;
+  //$(".photoswipe a").click(function(e){
+  //  e.preventDefault() ;
+  //  e.stopPropagation() ;
+  //}).photoSwipe() ;
   $(".quit").click(function(e){
     console.log('quit') ;
     e.preventDefault() ;
@@ -21,38 +23,23 @@ $('[data-role="page"]').live('pageinit',function(e){
 
 $('#home').live('pageinit',function(e) {
   var $page = $(this) ;  
-  var $homeBtn = $page.find(".home-button") ;
-  $homeBtn.attr('data-icon','delete') ;
   $page.trigger('create') ;
   
-  $("#download_me").click(function(e){
+  $('#login_form').submit(function(e){
     e.preventDefault() ;
-    e.stopPropagation() ;
-    var uri = encodeURI("http://c385093.r93.cf1.rackcdn.com/2/files/2012/01/DSC039931-450x299.jpg") ;
-    var destination = "/sdcard/com.doublebeamdesign.download-test/test.jpg" ;
-    var fileTransfer = new FileTransfer() ;
-    fileTransfer.download(uri, destination,function(f){
-      // success
-      mobile_alert.alert("Success!<br>" + f.fullPath ) ;
-      $('.status').html("<img src='" + f.fullPath + "' />") ;
-    },function(err){
-      // failure
-      mobile_alert.alert(
-        //"download error source: " + err.source + "<br>" + 
-        //"download error target: " + err.target + "<br>" + 
-        "<strong>No dice</strong><br>" +
-        "error code: " + err.code + "<br>" +
-        "http status: " + err.http_status + "<br>" 
-      ) ;
+    var data = $(this).serialize() ;
+    var the_url = $(this).attr('action') ;
+    $.post(the_url,data,function(portData){
+    //portData = {'testing 1':'testing', 'testing 2':'testing'}
+      portfolioData = $.parseJSON(portData) ;
+      $.mobile.changePage("#portfolio_sync",{transition:'slideup'}) ;
+      var $content = $("#portfolio_sync .content") ;
+      $.each(portfolioData,function(idx,obj){
+        $content.append("<p>" + obj.post_title + "<br>" + obj.imgs.length + " images</p>") ;
+      }) ;
     }) ;
   }) ;
 }) ;
-
-$('#new').live('pageinit',function(e) {
-  var $page = $(this) ;
-
-}) ;
-
 
 
 $('#home').live('pagebeforeshow',function(e){

@@ -80,6 +80,13 @@
 .ui-footer > .ui-btn.quit { float: right; font-size: small; margin-right:5px;}
 
 
+/* =Login Page
+========================================*/
+
+#login_form { text-align: left; }
+#login_form input { margin-bottom: 2em; }
+
+
 /* =Gallery
 ========================================*/
 .photoswipe { margin: 0; padding: 0; }
