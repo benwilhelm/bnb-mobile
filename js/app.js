@@ -30,8 +30,9 @@ $('#home').live('pageinit',function(e) {
     var data = $(this).serialize() ;
     var the_url = $(this).attr('action') ;
     $.post(the_url,data,function(portData){
-    //portData = {'testing 1':'testing', 'testing 2':'testing'}
+    //portData = '{"testing 1":"testing", "testing 2":"testing"}' ;
       portfolioData = $.parseJSON(portData) ;
+      console.log(portfolioData) ;
       $.mobile.changePage("#portfolio_sync",{transition:'slideup'}) ;
       var $content = $("#portfolio_sync .content") ;
       $.each(portfolioData,function(idx,obj){
