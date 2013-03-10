@@ -26,10 +26,15 @@ $('#home').live('pageinit',function(e) {
   $page.trigger('create') ;
   
   $('#login_form').submit(function(e){
+    console.log('submit') ;
     e.preventDefault() ;
     var data = $(this).serialize() ;
+    console.log(data) ;
     var the_url = $(this).attr('action') ;
+    console.log(the_url) ;
     $.post(the_url,data,function(portData){
+      console.log("returned!") ;
+      console.log(portData) ;
     //portData = '{"testing 1":"testing", "testing 2":"testing"}' ;
       portfolioData = $.parseJSON(portData) ;
       console.log(portfolioData) ;
