@@ -4,7 +4,7 @@
 	id		= "com.bitsandbristles.mobile-portfolio"
 	version 	= "1.0">
 
-	<name>B&B Mobile</name>
+	<name>BnB Mobile</name>
 
 	<description>
         Mobile app for storing a bitsandbristles.com portfolio offline
@@ -21,7 +21,7 @@
 
   <feature name="http://api.phonegap.com/1.0/device" />
   <feature name="http://api.phonegap.com/1.0/file" />
-  <access origin="http://bitsandbristles.com">
+  <access origin="http://bitsandbristles.com" />
 
 	<preference name="target-device" value="handset" />
 	<preference name="fullscreen" value="true" />
