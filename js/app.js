@@ -29,8 +29,8 @@ $('#home').live('pageinit',function(e) {
     e.stopPropagation() ;
     var data = $(this).serialize() ;
     var the_url = $(this).attr('action') ;
-    portData = '{"categories":[{"term_id":1,"name":"Category 1"},{"term_id":2,"name":"Category 2"}]}' ;
-    //$.post(the_url,data,function(portData){
+    //portData = '{"categories":[{"term_id":1,"name":"Category 1"},{"term_id":2,"name":"Category 2"}]}' ;
+    $.post(the_url,data,function(portData){
       portfolioData = $.parseJSON(portData) ;
       console.log(portfolioData) ;
       $.mobile.changePage("#portfolio_sync",{transition:'slideup'}) ;
@@ -46,7 +46,7 @@ $('#home').live('pageinit',function(e) {
         $content.append("<p>Stored Category " + i + ": " + category.name + "</p>") ;
         $content.append("<pre>" + localStorage[i] + "</pre>") ;
       }
-    //}) ;
+    }) ;
   }) ;
 }) ;
 
