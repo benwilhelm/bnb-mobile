@@ -1,42 +1,46 @@
-db = {
+var db = {
 
-  cards: {    
-    fetch: function(idx) {
-      var full_idx = idx.substring(0,6) == "cards." ? idx : "cards." + idx ;
-      var str = localStorage[full_idx] ;
-      var obj = JSON.parse(str) ;
-      obj.index = idx.replace('cards.','') ;
-      return obj ;
-    },
+  select_row: function(table,idx) {
+    var full_idx = table + '.' + idx ;
+    var str = localStorage[full_idx] ;
+    var obj = JSON.parse(str) ;
+    return obj ;
+  },
     
-    add: function(obj) {
-      var stamp = new Date().getTime().toString() ;
-      var idx = 'cards.' + stamp ;
-      var str = JSON.stringify(obj) ;
-      localStorage.setItem(idx,str) ;
-      return stamp ;
-    },
+  insert_row: function(table,obj) {
+    var obj_idx = obj[this.schema.id_columns[table]] ;
+    var idx = table + '.' + obj_idx ;
+    var str = JSON.stringify(obj) ;
+    localStorage.setItem(idx,str) ;
+    return  ;
+  },
     
-    remove: function(idx) {
-      var full_idx = "cards." + idx ;
-      console.log(localStorage[full_idx]) ;
-      localStorage.removeItem(full_idx) ;
-    },
+  delete_row: function(table,idx) {
+    var full_idx = table + "." + idx ;
+    localStorage.removeItem(full_idx) ;
+  },
+  
+  select_all: function(table,options) {
+    var ret = [] ;
+    for (var idx in localStorage) {
+      if (idx.substring(0,table.length + 1) == table + '.') {
+        ret.push(this.select(idx)) ;
+      }
+    }  
     
-    all: function() {
-      var ret = [] ;
-      for (var idx in localStorage) {
-        if (idx.substring(0,6) == 'cards.') {
-          ret.push(db.cards.fetch(idx)) ;
-        }
-      }  
-      
+    if (options && options.orderby) {
       ret.sort(function(a,b) {
-        return a.name > b.name ;
+        return a[options.orderby] > b[options.orderby] ;
       }) ;
-          
-      return ret ;
     }
-    
-  } 
-}
+    return ret ;
+  },
+  
+  schema: {
+    id_columns: {
+      categories: 'term_id',
+      portfolio: 'ID',
+      image: 'ID'
+    }
+  }
+};

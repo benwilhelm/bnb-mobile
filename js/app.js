@@ -25,24 +25,28 @@ $('#home').live('pageinit',function(e) {
   $page.trigger('create') ;
   
   $('#login_form').submit(function(e){
-    console.log('submit') ;
     e.preventDefault() ;
+    e.stopPropagation() ;
     var data = $(this).serialize() ;
-    console.log(data) ;
     var the_url = $(this).attr('action') ;
-    console.log(the_url) ;
-    $.post(the_url,data,function(portData){
-      console.log("returned!") ;
-      console.log(portData) ;
-    //portData = '{"testing 1":"testing", "testing 2":"testing"}' ;
+    portData = '{"categories":[{"term_id":1,"name":"Category 1"},{"term_id":2,"name":"Category 2"}]}' ;
+    //$.post(the_url,data,function(portData){
       portfolioData = $.parseJSON(portData) ;
       console.log(portfolioData) ;
       $.mobile.changePage("#portfolio_sync",{transition:'slideup'}) ;
       var $content = $("#portfolio_sync .content") ;
-      $.each(portfolioData,function(idx,obj){
-        $content.append("<p>" + obj.post_title + "<br>" + obj.imgs.length + " images</p>") ;
+      $.each(portfolioData.categories,function(idx,obj){
+        $content.append("<p>Importing Category: " + obj.name + "</p>") ;
+        db.insert_row('categories',obj) ;
       }) ;
-    }) ;
+      
+      $content.append("<hr>") ;
+      for (var i in localStorage) {
+        var category = $.parseJSON(localStorage[i])
+        $content.append("<p>Stored Category " + i + ": " + category.name + "</p>") ;
+        $content.append("<pre>" + localStorage[i] + "</pre>") ;
+      }
+    //}) ;
   }) ;
 }) ;
 
