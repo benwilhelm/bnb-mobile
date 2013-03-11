@@ -3,7 +3,7 @@ var db = {
   select_row: function(table,idx) {
     var full_idx = table + '.' + idx ;
     var str = localStorage[full_idx] ;
-    var obj = JSON.parse(str) ;
+    var obj = $.parseJSON(str) ;
     return obj ;
   },
     
@@ -12,7 +12,7 @@ var db = {
     var idx = table + '.' + obj_idx ;
     var str = JSON.stringify(obj) ;
     localStorage.setItem(idx,str) ;
-    return  ;
+    return obj_idx ;
   },
     
   delete_row: function(table,idx) {
@@ -24,7 +24,8 @@ var db = {
     var ret = [] ;
     for (var idx in localStorage) {
       if (idx.substring(0,table.length + 1) == table + '.') {
-        ret.push(this.select(idx)) ;
+        var short_idx = idx.replace(table + '.','') ;
+        ret.push(this.select_row(table,short_idx)) ;
       }
     }  
     
@@ -36,11 +37,40 @@ var db = {
     return ret ;
   },
   
+  sync: function(table,rows) {
+    var row_ids = [] ;
+    for (var i=0; i<rows.length; i++) {
+      var row = rows[i] ;
+      var row_id = this.insert_row(table,row) ;
+      row_ids.push(row_id) ;
+    }
+    
+    var all_rows = this.select_all(table) ;
+    for (var j=0; j<all_rows.length; j++) {
+      var test_row = all_rows[j] ;
+      var test_row_id = this.get_row_id(test_row,table) ;
+      if ($.inArray(test_row_id,row_ids) == -1) {
+        this.delete_row(table,test_row_id) ;
+      }
+    }
+  },
+  
+  get_row_id: function(row,table) {
+    return row[this.schema.id_columns[table]] ;
+  },
+  
   schema: {
     id_columns: {
       categories: 'term_id',
+      category_map: 'map_id',
       portfolio: 'ID',
       image: 'ID'
+    },
+    modified_columns: {
+      categories: false,
+      category_map: false,
+      portfolio: 'post_modified_gmt',
+      image: 'post_modified_gmt'
     }
   }
 };

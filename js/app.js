@@ -29,22 +29,35 @@ $('#home').live('pageinit',function(e) {
     e.stopPropagation() ;
     var data = $(this).serialize() ;
     var the_url = $(this).attr('action') ;
-    //portData = '{"categories":[{"term_id":1,"name":"Category 1"},{"term_id":2,"name":"Category 2"}]}' ;
+    //portData = '{"categories":[{"term_id":1,"name":"Category 1"},{"term_id":3,"name":"Category 3"}]}' ;
     $.post(the_url,data,function(portData){
       portfolioData = $.parseJSON(portData) ;
-      console.log(portfolioData) ;
-      $.mobile.changePage("#portfolio_sync",{transition:'slideup'}) ;
+      $.mobile.changePage("#portfolio_sync") ;
       var $content = $("#portfolio_sync .content") ;
-      $.each(portfolioData.categories,function(idx,obj){
-        $content.append("<p>Importing Category: " + obj.name + "</p>") ;
-        db.insert_row('categories',obj) ;
-      }) ;
+      $content.html('<p>Syncing...</p>') ;
       
+      if (typeof portfolioData.categories != 'undefined')
+        db.sync('categories',portfolioData.categories) ;      
+
+      if (typeof portfolioData.category_map != 'undefined')
+        db.sync('category_map',portfolioData.category_map) ;
+
+      if (typeof portfolioData.portfolios != 'undefined')
+        db.sync('portfolios',portfolioData.portfolios) ;
+
+      if (typeof portfolioData.images != 'undefined')
+        db.sync('images',portfolioData.images) ;      
+
       $content.append("<hr>") ;
-      for (var i in localStorage) {
-        var category = $.parseJSON(localStorage[i])
-        $content.append("<p>Stored Category " + i + ": " + category.name + "</p>") ;
-        $content.append("<pre>" + localStorage[i] + "</pre>") ;
+      var tables = ['categories','category_map','portfolios','images'] ;
+      for (var t=0; t<tables.length; t++) {
+        var table = tables[t] ;
+        $content.append("<h3>" + table + "</h3>") ;
+        var pnames = {'categories':'name','category_map':'map_id','portfolios':'post_title','images':'post_title'} ;
+        $.each(db.select_all(table),function(idx,obj){
+          var title = obj[pnames[table]] ;
+          $content.append("<p>" + title + "</p>") ;
+        }) ;
       }
     }) ;
   }) ;
