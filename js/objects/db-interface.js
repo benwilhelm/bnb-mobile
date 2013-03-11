@@ -25,7 +25,9 @@ var db = {
     for (var idx in localStorage) {
       if (idx.substring(0,table.length + 1) == table + '.') {
         var short_idx = idx.replace(table + '.','') ;
-        ret.push(this.select_row(table,short_idx)) ;
+        if (short_idx && short_idx != 'undefined') {
+          ret.push(this.select_row(table,short_idx)) ;
+        }
       }
     }  
     
@@ -63,8 +65,8 @@ var db = {
     id_columns: {
       categories: 'term_id',
       category_map: 'map_id',
-      portfolio: 'ID',
-      image: 'ID'
+      portfolios: 'ID',
+      images: 'ID'
     },
     modified_columns: {
       categories: false,
