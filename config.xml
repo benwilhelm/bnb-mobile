@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <widget xmlns		= "http://www.w3.org/ns/widgets"
-	xmlns:gap	= "http://phonegap.com/ns/1.0"
+	xmlns:gap	= "http://phonegap.com/ns/2.0"
 	id		= "com.bitsandbristles.mobile-portfolio"
 	version 	= "1.0">
 
@@ -15,13 +15,16 @@
 		Bits and Bristles
 	</author>
 
+  <plugin name="Storage" value="org.apache.cordova.Storage" />
+
   <icon src="images/icon_72.png" width="72" height="72" />
   <icon src="images/icon_48.png" width="48" height="48" />
   <icon src="images/icon_36.png" width="36" height="36" />
 
-  <feature name="http://api.phonegap.com/1.0/device" />
-  <feature name="http://api.phonegap.com/1.0/file" />
+  <feature name="http://api.phonegap.com/2.0/device" />
+  <feature name="http://api.phonegap.com/2.0/file" />
   <access origin="http://staging.bitsandbristles.com" />
+  <access origin="http://*.rackcdn.com" />
 
   <gap:splash src="images/splash-s.jpg" gap:platform="android" gap:density="ldpi" />
   <gap:splash src="images/splash-m.jpg" gap:platform="android" gap:density="mdpi" />

@@ -1,4 +1,12 @@
-var portfolioData ;
+var portfolioData, db ;
+
+$(document).bind('pageinit',function(){
+  document.addEventListener('deviceready',function(){
+    console.log('device ready') ;
+    db = window.openDatabase('bnb_database.sqlite3','1.0','B&B Database',1000000) ;
+    db.transaction(createDB,errorCB) ;
+  }) ;
+}) ;
 
 $('[data-role="page"]').live('pagebeforecreate',function(e){
   var headerHtml = $('#header_html').html() ;
@@ -27,6 +35,7 @@ $('#home').live('pageinit',function(e) {
   $('#login_form').submit(function(e){
     e.preventDefault() ;
     e.stopPropagation() ;
+    $.mobile.changePage("#portfolio_sync") ;
     var data = $(this).serialize() ;
     var the_url = $(this).attr('action') ;
 
@@ -38,36 +47,14 @@ $('#home').live('pageinit',function(e) {
 //    portData += '}' ;
 
     $.post(the_url,data,function(portData){
+      console.log('connected') ;
       portfolioData = $.parseJSON(portData) ;
-      $.mobile.changePage("#portfolio_sync") ;
+      console.log(portfolioData) ;
       var $content = $("#portfolio_sync .content") ;
-      $content.html('<p>Syncing...</p>') ;
-      
-      if (typeof portfolioData.categories != 'undefined')
-        db.sync('categories',portfolioData.categories) ;      
-
-      if (typeof portfolioData.category_map != 'undefined')
-        db.sync('category_map',portfolioData.category_map) ;
-
-      if (typeof portfolioData.portfolios != 'undefined')
-        db.sync('portfolios',portfolioData.portfolios) ;
-
-      if (typeof portfolioData.images != 'undefined')
-        db.sync('images',portfolioData.images) ;      
-
+      $content.html('<p>Syncing...</p>') ;      
+      sync_db(portfolioData) ;
       $content.append("<hr>") ;
-      var tables = ['categories','category_map','portfolios','images'] ;
-      for (var t=0; t<tables.length; t++) {
-        var table = tables[t] ;
-        $content.append("<h3>" + table + "</h3>") ;
-        var pnames = {'categories':'name','category_map':'map_id','portfolios':'post_title','images':'post_title'} ;
-
-        var all = db.select_all(table) ;
-        $.each(all,function(idx,obj){
-          var title = obj[pnames[table]] ;
-          $content.append("<p>" + title + "</p>") ;
-        }) ;
-      }
+      list_categories($content) ;    
     }) ;
   }) ;
 }) ;
