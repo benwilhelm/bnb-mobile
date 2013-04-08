@@ -15,7 +15,7 @@
 		Bits and Bristles
 	</author>
 
-  <plugin name="Storage" value="org.apache.cordova.Storage" />
+  <!--<plugin name="Storage" value="org.apache.cordova.Storage" />-->
 
   <icon src="images/icon_72.png" width="72" height="72" />
   <icon src="images/icon_48.png" width="48" height="48" />
