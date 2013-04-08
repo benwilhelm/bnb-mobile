@@ -21,8 +21,8 @@
   <icon src="images/icon_48.png" width="48" height="48" />
   <icon src="images/icon_36.png" width="36" height="36" />
 
-  <feature name="http://api.phonegap.com/2.0/device" />
-  <feature name="http://api.phonegap.com/2.0/file" />
+  <feature name="http://api.phonegap.com/1.0/device" />
+  <feature name="http://api.phonegap.com/1.0/file" />
   <access origin="http://staging.bitsandbristles.com" />
   <access origin="http://*.rackcdn.com" />
 
@@ -31,7 +31,6 @@
   <gap:splash src="images/splash-l.jpg" gap:platform="android" gap:density="hdpi" />
   <gap:splash src="images/splash-xl.jpg" gap:platform="android" gap:density="xhdpi" />
 
-  <preference name="phonegap-version" value="2.5.0" />
 	<preference name="target-device" value="handset" />
 	<preference name="fullscreen" value="true" />
 	<preference name="orientation" value="portrait" />
