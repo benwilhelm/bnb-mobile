@@ -2,7 +2,7 @@
 <widget xmlns		= "http://www.w3.org/ns/widgets"
 	xmlns:gap	= "http://phonegap.com/ns/1.0"
 	id		= "com.bitsandbristles.mobile-portfolio"
-	version 	= "1.0">
+	version 	= "1.0.0">
 
 	<name>BnB Mobile</name>
 
@@ -29,6 +29,7 @@
   <gap:splash src="images/splash-l.jpg" gap:platform="android" gap:density="hdpi" />
   <gap:splash src="images/splash-xl.jpg" gap:platform="android" gap:density="xhdpi" />
 
+  <preference name='phonegap-version' value='2.3.0' />
 	<preference name="target-device" value="handset" />
 	<preference name="fullscreen" value="true" />
 	<preference name="orientation" value="portrait" />
