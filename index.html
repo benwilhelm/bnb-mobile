@@ -20,13 +20,25 @@
   <script src="js/photoswipe/code.photoswipe.jquery-3.0.5.min.js" type="text/javascript"></script>
   <script src="js/functions.js"></script>
   <script src="js/modules/db.module.js"></script>
+  <script src="js/modules/category.module.js"></script>
+  <script src="js/modules/image.module.js"></script>
   <script src="js/objects/mobile-alert.js"></script>
   <script src="js/app.js"></script>
 </head> 
 <body> 
 
-<!-- HOME PAGE ##########################-->
+<!-- home ##########################-->
 <div data-role="page" class="page" id="home">
+	<div class='header' data-role="header" data-position="fixed"></div><!-- /header -->
+	<div data-role="content" class="content">
+	
+	</div><!-- /content -->
+	<div class="footer" data-role="footer" data-position="fixed"></div><!-- footer -->
+</div><!-- #home -->
+
+
+<!-- Sync form ##########################-->
+<div data-role="page" class="page" id="sync_form">
 	<div class='header' data-role="header" data-position="fixed"></div><!-- /header -->
 	<div data-role="content" class="content">
 	
@@ -47,10 +59,10 @@
 	
 	</div><!-- /content -->
 	<div class="footer" data-role="footer" data-position="fixed"></div><!-- footer -->
-</div><!-- #home -->
+</div><!-- #sync_form -->
 
 
-<!-- SYNC PAGE ####################### -->
+<!-- SYNC progress ####################### -->
 <div data-role="page" class="page" id="portfolio_sync">
 	<div class='header' data-role="header" data-position="fixed"></div><!-- /header -->
 	<div data-role="content" class="content">
@@ -78,7 +90,9 @@
 </div>
 
 <div id="footer_html" class="hide">
-    <a class="quit" href="/">Quit</a>
+    <a href="#home">Home</a>
+
+    <a href="#sync_form">Sync</a>	
 </div>
 
 
